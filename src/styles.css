@@ -1,0 +1,78 @@
+@import "tailwindcss" source("../");
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans Tamil', 'Noto Sans Devanagari', system-ui, sans-serif;
+  --font-display: 'Fraunces', 'Noto Serif Tamil', Georgia, serif;
+
+  --color-leaf-50: #f1f7f2;
+  --color-leaf-100: #dcebdf;
+  --color-leaf-200: #b9d7c0;
+  --color-leaf-300: #8dbd99;
+  --color-leaf-400: #5c9c6d;
+  --color-leaf-500: #3b7f4f;
+  --color-leaf-600: #2b663e;
+  --color-leaf-700: #235233;
+  --color-leaf-800: #1d412a;
+  --color-leaf-900: #163322;
+  --color-leaf-950: #0c1d13;
+
+  --color-soil-50: #faf7f1;
+  --color-soil-100: #f3ede0;
+  --color-turmeric-400: #e7b33c;
+  --color-turmeric-500: #d99a1e;
+  --color-chilli-500: #d64532;
+}
+
+html {
+  font-size: var(--ub-font-scale, 100%);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  @apply bg-soil-50 text-leaf-950 dark:bg-leaf-950 dark:text-leaf-50;
+}
+
+.font-display {
+  font-variation-settings: 'opsz' 96;
+}
+
+.card {
+  @apply rounded-2xl border border-leaf-100 bg-white shadow-[0_1px_2px_rgba(22,51,34,0.04)] dark:border-leaf-800 dark:bg-leaf-900;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 rounded-full bg-leaf-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-leaf-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-leaf-500 disabled:opacity-50;
+}
+
+.btn-ghost {
+  @apply inline-flex items-center justify-center gap-2 rounded-full border border-leaf-200 px-5 py-2.5 text-sm font-semibold text-leaf-800 transition hover:bg-leaf-50 dark:border-leaf-700 dark:text-leaf-100 dark:hover:bg-leaf-800;
+}
+
+.input {
+  @apply w-full rounded-xl border border-leaf-200 bg-white px-4 py-3 text-sm text-leaf-950 placeholder:text-leaf-400 outline-none transition focus:border-leaf-500 focus:ring-4 focus:ring-leaf-100 dark:border-leaf-700 dark:bg-leaf-950 dark:text-leaf-50 dark:focus:ring-leaf-800;
+}
+
+.eyebrow {
+  @apply text-xs font-semibold uppercase tracking-[0.18em] text-leaf-600 dark:text-leaf-300;
+}
+
+@keyframes ub-pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(214, 69, 50, 0.45); }
+  100% { box-shadow: 0 0 0 14px rgba(214, 69, 50, 0); }
+}
+.pulse-alert {
+  animation: ub-pulse-ring 1.4s ease-out infinite;
+}
+
+@keyframes ub-flow {
+  to { background-position: 40px 0; }
+}
+.water-flow {
+  background-image: repeating-linear-gradient(90deg, rgba(56, 152, 236, 0.9) 0 12px, rgba(56, 152, 236, 0.35) 12px 20px);
+  background-size: 40px 100%;
+  animation: ub-flow 0.8s linear infinite;
+}
